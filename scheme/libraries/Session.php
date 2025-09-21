@@ -94,7 +94,9 @@ class Session {
 		{
 	    	$this->config['cookie_name'] = ini_get('session.name');
 	    } else {
+			if (!header_sent()) {
 	    	ini_set('session.name', $this->config['cookie_name']);
+			}
 	    }
 
 		//Set up session expiration
